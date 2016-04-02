@@ -1,10 +1,10 @@
 {
-  "name": "hapi-api",
-  "version": "0.2.2",
+  "name": "nodeserver",
+  "version": "0.0.1",
   "license": "MIT",
-  "description": "Lean Hapi API Boilerplate",
+  "description": "nodejs test server with auth",
   "bugs": {
-    "url": "https://github.com/rjmreis/hapi-api/issues"
+    "url": "https://github.com/faberyx/nodeserver/issues"
   },
   "main": "server.js",
   "scripts": {
@@ -13,14 +13,14 @@
     "eslint": "eslint . --ext .js --ignore node_modules/**"
   },
   "author": "Ricardo Reis",
-  "homepage": "https://github.com/rjmreis/hapi-api#readme",
+  "homepage": "https://github.com/faberyx/nodeserver#readme",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/rjmreis/hapi-api.git"
+    "url": "https://github.com/faberyx/nodeserver/nodeserver.git"
   },
   "keywords": [
-    "hapi"
+    "nodejs"
   ],
   "dependencies": {
     "blipp": "^2.3.0",
@@ -30,6 +30,7 @@
     "good-console": "^5.3.1",
     "hapi": "^13.2.2",
     "hapi-auth-jwt2": "^5.4.1",
+    "jsonwebtoken": "^5.7.0",
     "plugo": "^0.3.6"
   },
   "devDependencies": {

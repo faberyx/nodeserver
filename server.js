@@ -3,7 +3,7 @@
 const Glue = require('glue');
 const Hapi = require('hapi');
 const manifest = require('./config/manifest.json');
-
+const JWT   = require('jsonwebtoken');
 if (!process.env.PRODUCTION) {
   manifest.registrations.push({
     "plugin": {

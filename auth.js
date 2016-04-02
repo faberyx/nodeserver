@@ -1,7 +1,12 @@
+
+
+
 exports.register = function (plugin, options, next) {
+    
+  const secret_key = require('./config/auth');
 
   plugin.auth.strategy('jwt', 'jwt', {
-    key: 'NeverShareYourSecret', // Secret key
+    key: secret_key, // Secret key
     verifyOptions: {
       algorithms: ['HS256']
     },
@@ -11,7 +16,7 @@ exports.register = function (plugin, options, next) {
       var users = [
         {
           id: 1,
-          name: 'Jon Snow'
+          name: 'Mike'
         }
       ];
       
