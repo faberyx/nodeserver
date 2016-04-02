@@ -9,12 +9,15 @@ module.exports.login = {
       
     m.User.findById(request.params.id).then(function(user) {
         if(user != null){
-            var token = JWT.sign(user, secret_key);
+            var token = JWT.sign(user.dataValues, secret_key);
             return reply({ result: token });
         }else
-            return Boom.unauthorized('invalid credentials');    
+            return reply(Boom.unauthorized('invalid credentials'));    
     })  
-      
+    .error(function(err){
+        console.log('Error occured' + err);
+        return reply(Boom.badImplementation(err));
+    });
     
   }
 };
