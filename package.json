@@ -33,7 +33,8 @@
     "jsonwebtoken": "^5.7.0",
     "mysql": "^2.10.2",
     "plugo": "^0.3.6",
-    "sequelize": "^3.20.0"
+    "sequelize": "^3.20.0",
+    "sqlizr": "^1.2.0"
   },
   "devDependencies": {
     "blipp": "^2.3.0",
