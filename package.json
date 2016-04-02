@@ -1,0 +1,49 @@
+{
+  "name": "hapi-api",
+  "version": "0.2.2",
+  "license": "MIT",
+  "description": "Lean Hapi API Boilerplate",
+  "bugs": {
+    "url": "https://github.com/rjmreis/hapi-api/issues"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/lab/bin/lab -v",
+    "start": "node server.js",
+    "eslint": "eslint . --ext .js --ignore node_modules/**"
+  },
+  "author": "Ricardo Reis",
+  "homepage": "https://github.com/rjmreis/hapi-api#readme",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rjmreis/hapi-api.git"
+  },
+  "keywords": [
+    "hapi"
+  ],
+  "dependencies": {
+    "blipp": "^2.3.0",
+    "glob": "^7.0.0",
+    "glue": "^3.2.0",
+    "good": "^6.6.0",
+    "good-console": "^5.3.1",
+    "hapi": "^13.2.2",
+    "hapi-auth-jwt2": "^5.4.1",
+    "plugo": "^0.3.6"
+  },
+  "devDependencies": {
+    "blipp": "^2.3.0",
+    "code": "^2.1.0",
+    "eslint": "^2.2.0",
+    "good": "^6.6.0",
+    "good-console": "^5.3.1",
+    "lab": "^10.1.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true
+    }
+  }
+}
