@@ -1,11 +1,20 @@
+const secret_key = require('../../config/auth');
+const JWT   = require('jsonwebtoken');
+const Boom = require('boom');
+
 module.exports.login = {
   handler: function (request, reply) {
       
-    const secret_key = require('../../config/auth');
-    const JWT   = require('jsonwebtoken');
-    var obj   = { id:1,name:"Mike" }; // object/info you want to sign
-    var token = JWT.sign(obj, secret_key);
+    var m =   request.server.plugins.dbsql.db.sequelize.models;
       
-    return reply({ result: token });
+    m.User.findById(request.params.id).then(function(user) {
+        if(user != null){
+            var token = JWT.sign(user, secret_key);
+            return reply({ result: token });
+        }else
+            return Boom.unauthorized('invalid credentials');    
+    })  
+      
+    
   }
 };

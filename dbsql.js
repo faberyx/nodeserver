@@ -6,8 +6,8 @@ exports.register = (plugin, options, next) => {
 
 
     // default directory for models
-    options.models = options.models || 'models/**/*.js';
-    var sequelize = new Sequelize('vtiger', 'root', 'asdasd', {
+    options.models = options.models || './models/*.js';
+    var sequelize = new Sequelize('webdata', 'root', 'asdasd', {
         host: '91.205.173.98',
         dialect: 'mysql',
 
@@ -16,6 +16,9 @@ exports.register = (plugin, options, next) => {
             min: 0,
             idle: 10000
         },
+        define: {
+        timestamps: false // true by default
+    }
 
     });
     // test the database connection
