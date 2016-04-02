@@ -25,6 +25,12 @@
       }
     },
     {
+      "plugin": "./dbsql",
+      "options": {
+        "select": "api"
+      }
+    },
+    {
       "plugin": "./controllers",
       "options": {
         "select": "api"
