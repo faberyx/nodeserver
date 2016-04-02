@@ -10,7 +10,10 @@ node hapi API server with jwt authentication
 - **Hapi** - [http://hapijs.com/](http://hapijs.com/)
 
  ### Plugins
-
+- **Sequelize** - Database ORM
+http://docs.sequelizejs.com/en/latest/
+- **sqlizr** - Sequelize plugin to load all models 
+http://docs.sequelizejs.com/en/latest/
 - **glue** - Server composer for hapi.js.
 https://github.com/hapijs/glue
 - **glob** - Match files using the patterns the shell uses.
