@@ -13,11 +13,8 @@ module.exports.login = {
             return reply({ result: token });
         }else
             return reply(Boom.unauthorized('invalid credentials'));    
-    })  
-    .error(function(err){
-        console.log('Error occured' + err);
-        return reply(Boom.badImplementation(err));
     });
+    
     
   }
 };

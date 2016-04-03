@@ -7,8 +7,8 @@ exports.register = (plugin, options, next) => {
 
     // default directory for models
     options.models = options.models || './models/*.js';
-    var sequelize = new Sequelize('webdata', 'root', 'asdasd', {
-        host: '91.205.173.98',
+    var sequelize = new Sequelize('vtiger', 'root', 'h@p!w03Wg', {
+        host: '5.189.150.113',
         dialect: 'mysql',
 
         pool: {
@@ -17,8 +17,9 @@ exports.register = (plugin, options, next) => {
             idle: 10000
         },
         define: {
-        timestamps: false // true by default
-    }
+            freezeTableName: true,
+            timestamps: false // true by default
+        }
 
     });
     // test the database connection
