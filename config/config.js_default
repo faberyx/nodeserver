@@ -1,0 +1,14 @@
+
+//rename to config.js
+
+var config = {};
+
+config.secret_key = '';
+config.db_host = '';
+config.db_schema = '';
+config.db_user = '';
+config.db_pass = '';
+
+
+module.exports = config;
+ 
