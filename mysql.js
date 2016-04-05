@@ -9,7 +9,7 @@ exports.register = (plugin, options, next) => {
 
     // default directory for models
     options.models = options.models || './models/*.js';
-    var sequelize = new Sequelize(config.db_schema, config.db_user,config.db_pass , {
+    var sequelize = new Sequelize(config.db_schema, config.db_user, config.db_pass, {
         host: config.db_host,
         dialect: 'mysql',
         pool: {
@@ -43,9 +43,9 @@ exports.register = (plugin, options, next) => {
             return next(err);
         });
 
-    
+
 };
 
 exports.register.attributes = {
-    name: 'dbsql'
+    name: 'mysql'
 };
