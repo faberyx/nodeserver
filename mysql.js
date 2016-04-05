@@ -1,16 +1,17 @@
+'use strict';
+
 var Sequelize = require('sequelize');
 var sqlizr = require('sqlizr');
-
+var config = require('./config/config');
 
 exports.register = (plugin, options, next) => {
 
 
     // default directory for models
     options.models = options.models || './models/*.js';
-    var sequelize = new Sequelize('vtiger', 'root', 'h@p!w03Wg', {
-        host: '5.189.150.113',
+    var sequelize = new Sequelize(config.db_schema, config.db_user,config.db_pass , {
+        host: config.db_host,
         dialect: 'mysql',
-
         pool: {
             max: 5,
             min: 0,

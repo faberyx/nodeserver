@@ -1,3 +1,5 @@
+'use strict';
+
 exports.register = (plugin, options, next) => {
 
   plugin.dependency('controllers');

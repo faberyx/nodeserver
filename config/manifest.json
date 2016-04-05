@@ -25,7 +25,7 @@
       }
     },
     {
-      "plugin": "./dbsql",
+      "plugin": "./mysql",
       "options": {
         "select": "api"
       }
@@ -51,7 +51,8 @@
             {
               "reporter": "good-console",
               "events": {
-                "log": "*"
+                "error": "*",
+                "response": "*"
               }
             }
           ]

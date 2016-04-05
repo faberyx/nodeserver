@@ -1,12 +1,11 @@
+'use strict'
 
-
+var config = require('./config/config');
 
 exports.register = function (plugin, options, next) {
-    
-  const secret_key = require('./config/auth');
 
   plugin.auth.strategy('jwt', 'jwt', {
-    key: secret_key, // Secret key
+    key: config.secret_key, // Secret key
     verifyOptions: {
       algorithms: ['HS256']
     },

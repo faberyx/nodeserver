@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = function(sequelize, DataTypes) {
 
   var Users = sequelize.define('vtiger_users', {

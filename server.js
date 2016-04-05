@@ -14,7 +14,7 @@ if (!process.env.PRODUCTION) {
 
   let good = manifest.registrations.find(p => p.plugin.register === 'good');
   if (good) {
-    good.plugin.options.reporters[0].events['ops'] = '*';
+    good.plugin.options.reporters[0].events['response'] = '*';
   }
 }
 
