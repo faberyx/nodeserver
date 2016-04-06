@@ -2,7 +2,7 @@ const secret_key = require('../../config/config');
 const JWT = require('jsonwebtoken');
 const Boom = require('boom');
 
-module.exports.login = {
+module.exports.get = {
     handler: function(request, reply) {
 
         var m = request.server.plugins.mysql.db.sequelize.models;

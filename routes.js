@@ -10,9 +10,13 @@ exports.register = (plugin, options, next) => {
         // Application Routes
         { method: 'GET', path: '/{path*}', config: handlers.Home.notFound },
         { method: 'GET', path: '/', config: handlers.Home.hello },
-        { method: 'GET', path: '/restricted', config: handlers.Home.restricted },
-        { method: 'GET', path: '/login/{id}', config: handlers.Login.login },
-        { method: 'GET', path: '/users', config: handlers.Users.list },
+        { method: 'GET', path: '/token/get/{id}', config: handlers.Token.get },
+        //users
+        { method: 'POST', path: '/users', config: handlers.Users.create },
+        { method: 'GET', path: '/users', config: handlers.Users.read },
+        { method: 'GET', path: '/users/{id}', config: handlers.Users.find },
+        { method: 'PUT', path: '/users/{id}', config: handlers.Users.update },
+        { method: 'DELETE', path: '/users/{id}', config: handlers.Users.delete },
     ]);
 
     next();
