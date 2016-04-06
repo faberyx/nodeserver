@@ -15,7 +15,7 @@ module.exports.find = {
     handler: function(request, reply) {
 
         var m = request.server.plugins.mysql.db.sequelize.models;
-        m.vtiger_users.then(function(user) {
+        m.vtiger_users.findById(req.params.id).then(function(user) {
             return reply(user);
         })
 
@@ -28,12 +28,12 @@ module.exports.create = {
         
         var m = request.server.plugins.mysql.db.sequelize.models;
         m.vtiger_users.create({ 
-            user_name: request.params.user_name,
-            user_password: request.params.user_password,
-            user_hash: request.params.user_hash,
-            cal_color: request.params.cal_color,
-            first_name: request.params.first_name,
-            last_name:request.params.last_name
+            user_name: request.payload.user_name,
+            user_password: request.payload.user_password,
+            user_hash: request.payload.user_hash,
+            cal_color: request.payload.cal_color,
+            first_name: request.payload.first_name,
+            last_name:request.payload.last_name
          }).then(function(user) {
             reply(user).created('/users/' + user.id ); 
         }).catch(function(error) {
@@ -48,17 +48,17 @@ module.exports.update = {
         
         var m = request.server.plugins.mysql.db.sequelize.models;
 
-        m.vtiger_users.findById(req.params.id).then(function(user) {
+        m.vtiger_users.findById(request.params.id).then(function(user) {
             if(user)
                 user.update({ 
-                    user_name: request.params.user_name,
-                    user_password: request.params.user_password,
-                    user_hash: request.params.user_hash,
-                    cal_color: request.params.cal_color,
-                    first_name: request.params.first_name,
-                    last_name:request.params.last_name
+                    user_name: request.payload.user_name,
+                    user_password: request.payload.user_password,
+                    user_hash: request.payload.user_hash,
+                    cal_color: request.payload.cal_color,
+                    first_name: request.payload.first_name,
+                    last_name:request.payload.last_name
                 }).then(function(newuser) {
-                    return reply(newuser).created('/users/' + user.id ); 
+                    return reply().code(200); 
                 }).catch(function(error) {
                     return reply(Boom.badImplementation(error));
                 });   
@@ -76,10 +76,10 @@ module.exports.delete = {
          
         var m = request.server.plugins.mysql.db.sequelize.models;
 
-        m.vtiger_users.findById(req.params.id).then(function(user) {
+        m.vtiger_users.findById(request.params.id).then(function(user) {
             if(user)
-                user.destroy().then(function(newuser) {
-                    return reply(newuser).created('/users/' + user.id ); 
+                user.destroy().then(function() {
+                    return reply().code(200); 
                 }).catch(function(error) {
                     return reply(Boom.badImplementation(error));
                 });   
