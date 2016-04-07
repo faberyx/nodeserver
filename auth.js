@@ -1,6 +1,6 @@
 'use strict'
 
-var config = require('./config/config');
+var config = require('./config/config_' + process.env.NODE_ENV);
 
 exports.register = function(plugin, options, next) {
 

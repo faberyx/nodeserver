@@ -3,4 +3,5 @@ node_modules
 
 .vscode
 typings
-config.js
+config_prod.js
+config_dev.js

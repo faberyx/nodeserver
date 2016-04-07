@@ -1,4 +1,4 @@
-const secret_key = require('../../config/config');
+const secret_key = require('../../config/config_' + process.env.NODE_ENV);
 const JWT = require('jsonwebtoken');
 const Boom = require('boom');
 

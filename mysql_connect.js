@@ -2,7 +2,7 @@
 
 var Sequelize = require('sequelize');
 var sqlizr = require('sqlizr');
-var config = require('./config/config');
+var config = require('./config/config_' + process.env.NODE_ENV);
 
 exports.register = (plugin, options, next) => {
 
