@@ -36,16 +36,15 @@ exports.register = (plugin, options, next) => {
 
             // make available in hapi application
             plugin.expose('db', db);
-
             return next();
         })
         .catch(function(err) {
             return next(err);
-        });
-
-
+        })
+        
+        next();
 };
 
 exports.register.attributes = {
-    name: 'mysql'
+    name: 'mysql_connect'
 };

@@ -6,13 +6,13 @@
   "bugs": {
     "url": "https://github.com/faberyx/nodeserver/issues"
   },
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "./node_modules/lab/bin/lab -v",
-    "start": "node server.js",
+    "start": "node index.js",
     "eslint": "eslint . --ext .js --ignore node_modules/**"
   },
-  "author": "Ricardo Reis",
+  "author": "Fabrizio Catitti",
   "homepage": "https://github.com/faberyx/nodeserver#readme",
   "private": false,
   "repository": {

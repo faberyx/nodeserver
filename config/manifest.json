@@ -1,63 +1,63 @@
 {
-  "connections": [
-    {
-      "host": "localhost",
-      "port": 8000,
-      "labels": [
-        "api"
-      ],
-      "routes": {
-        "cors": true
-      }
-    }
-  ],
-  "registrations": [
-    {
-      "plugin": "hapi-auth-jwt2",
-      "options": {
-        "select": "api"
-      }
-    },
-    {
-      "plugin": "./auth",
-      "options": {
-        "select": "api"
-      }
-    },
-    {
-      "plugin": "./mysql",
-      "options": {
-        "select": "api"
-      }
-    },
-    {
-      "plugin": "./controllers",
-      "options": {
-        "select": "api"
-      }
-    },
-    {
-      "plugin": "./routes",
-      "options": {
-        "select": "api"
-      }
-    },
-    {
-      "plugin": {
-        "register": "good",
-        "options": {
-          "opsInterval": 10000,
-          "reporters": [
-            {
-              "reporter": "good-console",
-              "events": {
-                "error": "*",
-                "response": "*"
-              }
+    "connections": [
+        {
+            "host": "127.0.0.1",
+            "port": 8000,
+            "labels": [
+                "api"
+            ],
+            "routes": {
+                "cors": true
             }
-          ]
         }
-      }
-    }
-  ]
+    ],
+    "registrations": [
+        {
+            "plugin": "./mysql_connect",
+            "options": {
+                "select": "api"
+            }
+        },
+        {
+            "plugin": "hapi-auth-jwt2",
+            "options": {
+                "select": "api"
+            }
+        },
+        {
+            "plugin": "./auth",
+            "options": {
+                "select": "api"
+            }
+        },
+        {
+            "plugin": "./controllers",
+            "options": {
+                "select": "api"
+            }
+        },
+        {
+            "plugin": "./routes",
+            "options": {
+                "select": "api"
+            }
+        },
+        {
+            "plugin": {
+                "register": "good",
+                "options": {
+                    "opsInterval": 10000,
+                    "reporters": [
+                        {
+                            "reporter": "good-console",
+                            "events": {
+                                "error": "*",
+                                "response": "*"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
 }

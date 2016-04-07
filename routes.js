@@ -9,7 +9,7 @@ exports.register = (plugin, options, next) => {
     plugin.route([
         // Application Routes
       
-        { method: 'POST', path: '/', config: handlers.Default.test },
+        { method: 'GET', path: '/', config: handlers.Default.test },
         { method: 'GET', path: '/token/get/{id}', config: handlers.Token.getToken },
         //users
         { method: 'POST', path: '/users', config: handlers.Users.create },
