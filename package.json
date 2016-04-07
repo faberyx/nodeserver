@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/lab/bin/lab -v",
-    "start": "node index.js",
+    "start": "NODE_ENV=dev node index.js",
     "eslint": "eslint . --ext .js --ignore node_modules/**"
   },
   "author": "Fabrizio Catitti",
