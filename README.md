@@ -8,7 +8,7 @@ NodeJS API server Scaffold
 - jwt authentication
 - sequelize ORM
 
-Development version: 0.0 [![Build Status](https://travis-ci.org/faberyx/nodeserver.svg?branch=master)](https://travis-ci.org/faberyx/nodeserver)
+Development version: 0.01 [![Build Status](https://travis-ci.org/faberyx/nodeserver.svg?branch=master)](https://travis-ci.org/faberyx/nodeserver)
 ---
 #### Plugins
 - **sqlizr** - Sequelize plugin to load all models 
