@@ -1,4 +1,5 @@
 
+[![Build Status](https://travis-ci.org/faberyx/nodeserver.svg?branch=master)](https://travis-ci.org/faberyx/nodeserver)
 
 # node server
 node hapi API server with jwt authentication
