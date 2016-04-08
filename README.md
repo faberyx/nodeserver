@@ -1,16 +1,16 @@
 
-# node server
+# Node Server
 
 NodeJS API server Scaffold
 
 **Built on:**
-hapi js framework
-jwt authentication
-sequelize ORM
+- hapi js framework
+- jwt authentication
+- sequelize ORM
 
 Development version: 0.0 [![Build Status](https://travis-ci.org/faberyx/nodeserver.svg?branch=master)](https://travis-ci.org/faberyx/nodeserver)
-
- #### Plugins
+---
+#### Plugins
 - **sqlizr** - Sequelize plugin to load all models 
 - **glue** - Server composer for hapi.js.
 - **glob** - Match files using the patterns the shell uses.
