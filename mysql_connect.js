@@ -6,7 +6,6 @@ var config = require('./config/config');
 
 exports.register = (plugin, options, next) => {
 
-
     // default directory for models
     options.models = options.models || './models/*.js';
     var sequelize = new Sequelize(config.db_schema, config.db_user, config.db_pass, {
