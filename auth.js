@@ -11,20 +11,15 @@ exports.register = function(plugin, options, next) {
         },
         // Implement validation function
         validateFunc: (decoded, request, callback) => {
-            // NOTE: This is purely for demonstration purposes!
-            var users = [
-                {
-                    id: 1,
-                    name: 'Mike'
+            var m = request.server.plugins.mysql.db.sequelize.models;
+            m.vtiger_users.findById(decoded.id).then(function(user) {
+                if (users == null) {
+                    return callback(null, false);
+                } else {
+                    return callback(null, true);
                 }
-            ];
+            })
 
-            if (users.find(u => u.id === decoded.id)) {
-                return callback(null, true);
-            }
-            else {
-                return callback(null, false);
-            }
         }
     });
 
