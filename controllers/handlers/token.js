@@ -5,7 +5,7 @@ const Boom = require('boom');
 module.exports.getToken = {
     handler: function(request, reply) {
 
-        var m = request.server.plugins.mysql.db.sequelize.models;
+        var m = request.server.plugins.mysql_connect.db.sequelize.models;
 
         m.User.findById(request.params.id).then(function(user) {
             if (user != null) {
@@ -18,3 +18,12 @@ module.exports.getToken = {
 
     }
 };
+
+module.exports.checkToken = {
+    auth: 'jwt',
+    handler: function(request, reply) {
+        
+        return reply('ok');
+       
+    }
+}
