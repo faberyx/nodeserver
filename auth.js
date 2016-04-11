@@ -24,8 +24,6 @@ exports.register = function(plugin, options, next) {
     });
 
     // Uncomment this to apply default auth to all routes
-    //plugin.auth.default('jwt');
-
     next();
 };
 
