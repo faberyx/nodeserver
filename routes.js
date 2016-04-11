@@ -11,6 +11,7 @@ exports.register = (plugin, options, next) => {
       
         { method: 'GET', path: '/', config: handlers.Default.test },
         { method: 'GET', path: '/token/get/{id}', config: handlers.Token.getToken },
+        { method: 'GET', path: '/token/check', config: handlers.Token.checkToken },
         //users
         { method: 'POST', path: '/users', config: handlers.Users.create },
         { method: 'GET', path: '/users', config: handlers.Users.read },

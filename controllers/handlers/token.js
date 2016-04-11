@@ -1,4 +1,4 @@
-const secret_key = require('../../config/config');
+const config = require('../../config/config');
 const JWT = require('jsonwebtoken');
 const Boom = require('boom');
 
@@ -7,7 +7,7 @@ module.exports.getToken = {
 
         var m = request.server.plugins.mysql_connect.db.sequelize.models;
 
-        m.User.findById(request.params.id).then(function(user) {
+        m.vtiger_users.findById(request.params.id).then(function(user) {
             if (user != null) {
                 var token = JWT.sign(user.dataValues, config.secret_key);
                 return reply(token);
@@ -23,7 +23,7 @@ module.exports.checkToken = {
     auth: 'jwt',
     handler: function(request, reply) {
         
-        return reply('ok');
+        return reply(request.auth.credentials.id);
        
     }
 }
