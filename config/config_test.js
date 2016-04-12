@@ -1,10 +1,9 @@
 var config = {};
 
-config.secret_key = 'secret_key';
-config.db_host = 'localhost';
-config.db_schema = 'test';
+config.secret_key = 'secretkey';
+config.db_host = '5.189.150.113';
+config.db_schema = 'vtiger';
 config.db_user = 'root';
-config.db_pass = 'pass';
+config.db_pass = 'h@p!w03Wg';
 
 module.exports = config;
- 
