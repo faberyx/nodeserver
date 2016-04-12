@@ -24,20 +24,36 @@ Glue.compose(manifest, { relativeTo: process.cwd() }, (err, server) => {
     });
 
     lab.it('Restricted route should return http status 200 for authenticated user', done => {
-      var options = {
+      var options_getToken = {
         method : 'GET',
-        url : '/restricted',
-        headers : {
-          'Authorization' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidXNlcl9uYW1lIjoiYWRtaW4iLCJ1c2VyX3Bhc3N3b3JkIjoiJDEkYWQwMDAwMDAkdzNHdlU3NEQ5RHJBc3BnY21GdUF1MCIsInVzZXJfaGFzaCI6ImQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlIiwiY2FsX2NvbG9yIjoiI0U2RkFEOCIsImZpcnN0X25hbWUiOiJhZG1pbiIsImxhc3RfbmFtZSI6IkFkbWluaXN0cmF0b3IiLCJpYXQiOjE0NjA0MDg3NzZ9.pUWKcqco_FShCnol6Jjimr2ujU1wDliPqkSY0dEToJU',
-          'Content-Type' : 'application/json; charset=utf-8'
-        }
+        url : '/token/get/1',
       };
-      server.inject(options, response => {
-        Code.expect(response.statusCode).to.equal(200);
-        done();
+       var options_checkToken = {
+        method : 'GET',
+        url : '/token/check',
+      };
+      server.inject(options_getToken, response => {
+           
+            Code.expect(response.statusCode).to.equal(200);
+            
+            var headers = {
+            'Authorization' : response.payload,
+            'Content-Type' : 'application/json; charset=utf-8'
+            };
+            
+            options_checkToken.headers = headers;
+            
+            server.inject(options_getToken, response => {
+            
+            console.log(response);
+                Code.expect(response.statusCode).to.equal(200);
+               
+            });
+            
+            done();
       });
     });
-  
+ 
     lab.it('Unknown route should return http status 404', done => {
       server.inject('/unkownroute', response => {
         Code.expect(response.statusCode).to.equal(404);
