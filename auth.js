@@ -7,6 +7,7 @@ exports.register = function(plugin, options, next) {
     plugin.auth.strategy('jwt', 'jwt', {
         key: config.secret_key, // Secret key
         verifyOptions: {
+            ignoreExpiration: false,
             algorithms: ['HS256']
         },
         // Implement validation function

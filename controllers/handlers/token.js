@@ -9,7 +9,9 @@ module.exports.getToken = {
 
         m.vtiger_users.findById(request.params.id).then(function(user) {
             if (user != null) {
-                var token = JWT.sign(user.dataValues, config.secret_key);
+                var token = JWT.sign(user.dataValues, config.secret_key, {
+                    expiresIn: 5 // expires in 24 seconds
+                });
                 return reply(token);
             } else
                 return reply(Boom.unauthorized('invalid credentials'));
