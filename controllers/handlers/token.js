@@ -9,8 +9,8 @@ module.exports.getToken = {
 
         m.vtiger_users.findById(request.params.id).then(function(user) {
             if (user != null) {
-                var token = JWT.sign(user.dataValues, config.secret_key, {
-                    expiresIn: 5 // expires in 24 seconds
+                var token = JWT.sign({user:user.dataValues}, config.secret_key, {
+                    expiresIn: 120 // expires in 120 seconds
                 });
                 return reply(token);
             } else
@@ -25,7 +25,7 @@ module.exports.checkToken = {
     auth: 'jwt',
     handler: function(request, reply) {
         
-        return reply(request.auth.credentials.id);
+        return reply(request.auth.credentials.user.id);
        
     }
 }
