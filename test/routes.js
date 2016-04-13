@@ -22,18 +22,21 @@ Glue.compose(manifest, { relativeTo: process.cwd() }, (err, server) => {
         done();
       });
     });
+    
+    
 
-    lab.it('Restricted route should return http status 200 for authenticated user', done => {
+    lab.it('Login to vtiger and return a valid token', done => {
       var options_getToken = {
-        method : 'GET',
-        url : '/token/get/1',
+        method : 'POST',
+        url : '/token/get',
+        payload : { "username":"test", "password":"asdasd"}
       };
        var options_checkToken = {
         method : 'GET',
         url : '/token/check',
       };
       server.inject(options_getToken, response => {
-           
+          
             Code.expect(response.statusCode).to.equal(200);
             
             var headers = {
@@ -45,7 +48,7 @@ Glue.compose(manifest, { relativeTo: process.cwd() }, (err, server) => {
             
             server.inject(options_getToken, response => {
             
-            console.log(response);
+          
                 Code.expect(response.statusCode).to.equal(200);
                
             });
