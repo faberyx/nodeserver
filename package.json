@@ -24,19 +24,24 @@
   ],
   "dependencies": {
     "blipp": "^2.3.0",
+    "boom": "^3.1.2",
     "glob": "^7.0.0",
     "glue": "^3.2.0",
     "good": "^6.6.0",
     "good-console": "^5.3.1",
     "hapi": "^13.2.2",
     "hapi-auth-jwt2": "^5.4.1",
+    "inert": "^3.2.0",
+    "ink-docstrap": "^1.1.4",
     "joi": "^8.0.5",
+    "jsdoc": "^3.4.0",
     "jsonwebtoken": "^5.7.0",
+    "lout": "^9.0.0",
     "mysql": "^2.10.2",
     "plugo": "^0.3.6",
     "sequelize": "^3.20.0",
     "sqlizr": "^1.2.0",
-    "boom": "^3.1.2"
+    "vision": "^4.1.0"
   },
   "devDependencies": {
     "blipp": "^2.3.0",
