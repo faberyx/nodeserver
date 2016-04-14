@@ -16,13 +16,6 @@ Glue.compose(manifest, { relativeTo: process.cwd() }, (err, server) => {
 
   lab.describe("Routes", () => {
 
-    lab.it('Known route should return http status 200', done => {
-      server.inject('/', response => {
-        Code.expect(response.statusCode).to.equal(200);
-        done();
-      });
-    });
-    
     
 
     lab.it('Login to vtiger and return a valid token', done => {
