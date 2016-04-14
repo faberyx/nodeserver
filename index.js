@@ -14,7 +14,7 @@ if (!process.env.PRODUCTION) {
 
     let good = manifest.registrations.find(p => p.plugin.register === 'good');
     if (good) {
-        good.plugin.options.reporters[0].events['response'] = '*';
+        good.plugin.options.reporters[0].events['log'] = '*';
     }
 }
 
@@ -22,6 +22,9 @@ Glue.compose(manifest, { relativeTo: __dirname }, (err, server) => {
     if (err) {
         console.log('server.register err:', err);
     }
+    server.register([require('vision'), require('inert'), { register: require('lout') }], function(err) { 
+        console.log(err);
+    });
     server.start(() => {
         console.log('✅  Server is listening on ' + server.info.uri.toLowerCase());
     });
