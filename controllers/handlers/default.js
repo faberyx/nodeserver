@@ -1,11 +1,8 @@
-module.exports.test = {
-    handler: function(request, reply) {
-        return reply({ test:'ok' });
-    }
-};
-
+ 
 module.exports.notFound = {
+    description: 'Page not found 404',
+    tags: ['api'],
     handler: function(request, reply) {
-        return reply({ result: 'Oops, 404 Page!' }).code(404);
+        return reply({ result: '404' }).code(404);
     }
 };
