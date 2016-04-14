@@ -1,40 +1,30 @@
 'use strict';
 
-var Sequelize = require('sequelize');
-var sqlizr = require('sqlizr');
-var config = require('./config/config');
-
 exports.register = (plugin, options, next) => {
-    
-    // default directory for models
-    options.models = options.models || './models/*.js';
-    var sequelize = new Sequelize(config.db_schema, config.db_user, config.db_pass, {
-        host: config.db_host,
-        dialect: 'mysql',
-        pool: { max: 5, min: 0, idle: 10000 },
-        define: {
-            freezeTableName: true,
-            timestamps: false // true by default
-        }
-    });
- 
-    // test the database connection
-    sequelize.authenticate()
-        .then(function() {
-            console.log('db connected');
-        })
-        .catch(function(err) {
-            console.log(err);
-        })
-    sqlizr(sequelize, options.models);
 
-    var db = { sequelize: sequelize, Sequelize: Sequelize };
-    // make available in hapi application
-    plugin.expose('db', db);
-     
+    plugin.dependency('controllers');
+
+    const handlers = plugin.plugins.controllers.handlers;
+
+    plugin.route([
+        // Application Routes
+      
+        
+        { method: 'POST', path: '/token/get', config: handlers.Token.getToken },
+        { method: 'GET', path: '/token/check', config: handlers.Token.checkToken },
+        //users
+        { method: 'POST', path: '/users', config: handlers.Users.create },
+        { method: 'GET', path: '/users', config: handlers.Users.read },
+        { method: 'GET', path: '/users/{id}', config: handlers.Users.find },
+        { method: 'PUT', path: '/users/{id}', config: handlers.Users.update },
+        { method: 'DELETE', path: '/users/{id}', config: handlers.Users.delete },
+        
+        { method: 'GET', path: '/{path*}', config: handlers.Default.notFound },
+    ]);
+
     next();
 };
 
 exports.register.attributes = {
-    name: 'mysql_connect'
+    name: 'routes'
 };
