@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/lab/bin/lab -v",
+    "test": "lab -v",
     "start": "NODE_ENV=dev node index.js",
     "eslint": "eslint . --ext .js --ignore node_modules/**"
   },
@@ -23,12 +23,9 @@
     "nodejs"
   ],
   "dependencies": {
-    "blipp": "^2.3.0",
     "boom": "^3.1.2",
     "glob": "^7.0.0",
     "glue": "^3.2.0",
-    "good": "^6.6.0",
-    "good-console": "^5.3.1",
     "hapi": "^13.2.2",
     "hapi-auth-jwt2": "^5.4.1",
     "hapi-swagger": "^5.0.1",
