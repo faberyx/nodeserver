@@ -10,7 +10,7 @@ const HapiSwagger = require('hapi-swagger');
  
 
 if (process.env.NODE_ENV!='production') {
-    console.log('ss');
+    
     manifest.registrations.push(
         {
             "plugin": {
