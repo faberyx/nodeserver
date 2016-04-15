@@ -7,20 +7,36 @@ const Inert = require('inert');
 const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
 
+ 
 
-if (!process.env.PRODUCTION) {
-    manifest.registrations.push({
-        "plugin": {
-            "register": "blipp",
-            "options": {}
+if (process.env.NODE_ENV!='production') {
+    console.log('ss');
+    manifest.registrations.push(
+        {
+            "plugin": {
+                "register": "blipp",
+                "options": {}
+            }
+        },
+        {
+            "plugin": {
+                "register": "good",
+                "options": {
+                    "opsInterval": 1000,
+                    "reporters": [
+                        {
+                            "reporter": "good-console",
+                            "events": {
+                               "log" : "*"
+                            }
+                        }
+                    ]
+                }
+            }
         }
-    });
-
-    let good = manifest.registrations.find(p => p.plugin.register === 'good');
-    if (good) {
-        good.plugin.options.reporters[0].events['log'] = '*';
-    }
+    );
 }
+
 
 Glue.compose(manifest, { relativeTo: __dirname }, (err, server) => {
     
