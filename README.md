@@ -13,6 +13,7 @@ Development version: 0.0.1 [![Build Status](https://travis-ci.org/faberyx/nodese
 #### Plugins
 - **sqlizr** - Sequelize plugin to load all models 
 - **glue** - Server composer for hapi.js.
+- **hapi-swagger** -Swagger documentation engine.
 - **glob** - Match files using the patterns the shell uses.
 - **hapi-auth-jwt2** - Secure Hapi.js authentication plugin using JSON Web Tokens (JWT).
 - **plugo** - Dynamically expose modules to hapi plugins from a given path
