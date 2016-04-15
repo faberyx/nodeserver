@@ -1,9 +1,14 @@
 'use strict'
 
+const Joi = require('joi');
+
 module.exports.read = {
+    description: 'Get a list of all users',
+    notes: 'Get a list of all vtiger users on the table',
+    tags: ['api','users'],
     handler: function(request, reply) {
 
-        var m = request.server.plugins.mysql_connect.db.sequelize.models;
+        const m = request.server.plugins.mysql_connect.db.sequelize.models;
         m.vtiger_users.all().then(function(users) {
             return reply(users);
         })
@@ -12,9 +17,17 @@ module.exports.read = {
 };
 
 module.exports.find = {
+    description: 'Find a single user by id',
+    notes: 'Find a single user passing the id parameter',
+    tags: ['api','users'],
+    validate: {
+        params: {
+            id: Joi.number().integer().description('user id'),
+        }
+    },
     handler: function(request, reply) {
 
-        var m = request.server.plugins.mysql_connect.db.sequelize.models;
+        const m = request.server.plugins.mysql_connect.db.sequelize.models;
         m.vtiger_users.findById(req.params.id).then(function(user) {
             return reply(user);
         })
@@ -24,9 +37,22 @@ module.exports.find = {
 
 module.exports.create = {
    // auth: 'jwt',
+    description: 'Create a new user',
+    notes: 'Create a new user on the table',
+    tags: ['api','users'],
+    validate: {
+        payload: {
+            user_name: Joi.string().min(1).max(256).description('username'),
+            user_password: Joi.string().min(1).max(256).description('password'),
+            user_hash: Joi.string().description('password hash'),
+            cal_color: Joi.string().description('user color'),
+            first_name: Joi.string().description('first name'),
+            last_name: Joi.string().description('last name'),
+        }
+    },
     handler: function(request, reply) {
         
-        var m = request.server.plugins.mysql_connect.db.sequelize.models;
+        const m = request.server.plugins.mysql_connect.db.sequelize.models;
         m.vtiger_users.create({ 
             user_name: request.payload.user_name,
             user_password: request.payload.user_password,
@@ -44,9 +70,22 @@ module.exports.create = {
 
 module.exports.update = {
    // auth: 'jwt',
+    description: 'Update an existing user',
+    notes: 'Update an existing user values',
+    tags: ['api','users'],
+    validate: {
+        payload: {
+            user_name: Joi.string().min(1).max(256).description('username'),
+            user_password: Joi.string().min(1).max(256).description('password'),
+            user_hash: Joi.string().description('password hash'),
+            cal_color: Joi.string().description('user color'),
+            first_name: Joi.string().description('first name'),
+            last_name: Joi.string().description('last name'),
+        }
+    },
     handler: function(request, reply) {
         
-        var m = request.server.plugins.mysql_connect.db.sequelize.models;
+        const m = request.server.plugins.mysql_connect.db.sequelize.models;
 
         m.vtiger_users.findById(request.params.id).then(function(user) {
             if(user)
@@ -72,9 +111,17 @@ module.exports.update = {
 
 module.exports.delete = {
    // auth: 'jwt',
+    description: 'Delete a user by id',
+    notes: 'Delete a user passing the id parameter',
+    tags: ['api','users'],
+    validate: {
+        params: {
+            id: Joi.number().integer().description('user id'),
+        }
+    },
     handler: function(request, reply) {
          
-        var m = request.server.plugins.mysql_connect.db.sequelize.models;
+        const m = request.server.plugins.mysql_connect.db.sequelize.models;
 
         m.vtiger_users.findById(request.params.id).then(function(user) {
             if(user)
