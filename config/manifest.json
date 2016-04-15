@@ -1,4 +1,4 @@
-{
+ {
     "connections": [
         {
             "host": "127.0.0.1",
@@ -41,23 +41,6 @@
             "options": {
                 "select": "api"
             }
-        },
-        {
-            "plugin": {
-                "register": "good",
-                "options": {
-                    "opsInterval": 10000,
-                    "reporters": [
-                        {
-                            "reporter": "good-console",
-                            "events": {
-                                "error": "*",
-                                "response": "*"
-                            }
-                        }
-                    ]
-                }
-            }
-        }
+        } 
     ]
 }
