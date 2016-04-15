@@ -8,11 +8,11 @@ const crypto = require('crypto');
 module.exports.getToken = {
     description: 'Get the login JWT token using vtiger credentials',
     notes: 'Provide vtiger username and password to get the JWT token',
-    tags: ['authentication', 'token'],
+    tags: ['api','authentication'],
     validate: {
         payload: {
-            username: Joi.string().min(1).max(256),
-            password: Joi.string().min(1).max(256)
+            username: Joi.string().min(1).max(256).description('vtiger username'),
+            password: Joi.string().min(1).max(256).description('vtiger password')
         }
     },
     handler: function(request, reply) {
@@ -36,8 +36,11 @@ module.exports.getToken = {
 module.exports.checkToken = {
     description: 'Checks the validity of JWT token',
     notes: 'Pass the jwt token in the Authorization header to pass the authorization check',
-    tags: ['authentication', 'token'],
+    tags: ['api','authentication'],
     auth: 'jwt',
+    validate: {
+          headers: Joi.object({ 'authorization': Joi.string().required() }).unknown()
+    },
     handler: function(request, reply) {
         
         return reply(request.auth.credentials.user.id);
