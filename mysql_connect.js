@@ -11,12 +11,14 @@ exports.register = (plugin, options, next) => {
     const sequelize = new Sequelize(config.db_schema, config.db_user, config.db_pass, {
         host: config.db_host,
         dialect: 'mysql',
-        pool: { max: 5, min: 0, idle: 10000 },
+        logging: false,
+        pool: { max: 50, min: 0, idle: 10000 },
         define: {
             freezeTableName: true,
             timestamps: false // true by default
         }
     });
+ 
  
     // test the database connection
     sequelize.authenticate()
