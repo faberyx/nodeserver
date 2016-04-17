@@ -7,7 +7,6 @@ exports.register = (plugin, options, next) => {
     const handlers = plugin.plugins.controllers.handlers;
 
     plugin.route([
-       
         // Application Routes
         { method: 'POST', path: '/token/get', config: handlers.Token.getToken },
         { method: 'GET', path: '/token/check', config: handlers.Token.checkToken },
