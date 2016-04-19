@@ -19,7 +19,6 @@ exports.register = (plugin, options, next) => {
         }
     });
  
- 
     // test the database connection
     sequelize.authenticate()
         .then(function() {
