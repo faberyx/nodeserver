@@ -7,7 +7,6 @@ const Inert = require('inert');
 const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
 
- 
 
 if (process.env.NODE_ENV!='production') {
     
